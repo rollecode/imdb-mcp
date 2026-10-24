@@ -1,0 +1,24 @@
+{
+  "name": "imdb-mcp",
+  "version": "1.0.0",
+  "description": "IMDb MCP server with OAuth 2.1, for Claude.ai custom connectors and Claude Code",
+  "main": "auth-server.js",
+  "scripts": {
+    "start": "node auth-server.js",
+    "set-password": "node set-password.js"
+  },
+  "keywords": [
+    "mcp",
+    "imdb",
+    "movies",
+    "ratings",
+    "oauth",
+    "claude",
+    "model-context-protocol"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "better-sqlite3": "^13.0.3",
+    "express": "^5.2.1"
+  }
+}

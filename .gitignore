@@ -1,0 +1,9 @@
+.venv/
+.env
+__pycache__/
+*.egg-info/
+uv.lock
+node_modules/
+lastfm-mcp.service
+lastfm-mcp-auth.service
+lastfm-mcp.conf

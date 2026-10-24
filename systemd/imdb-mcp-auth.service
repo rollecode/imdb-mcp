@@ -1,0 +1,37 @@
+[Unit]
+Description=Login and access control for the IMDb MCP
+After=network-online.target imdb-mcp.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=YOUR_USER
+WorkingDirectory=/home/YOUR_USER/Projects/imdb-mcp
+Environment=PORT=8622
+Environment=UPSTREAM=http://127.0.0.1:8620
+Environment=ISSUER=https://imdb-mcp.example.com
+Environment=APP_SLUG=imdb
+Environment=APP_NAME=IMDb
+Environment=APP_FG=#121212
+Environment=APP_MUTED=#6b6b6b
+Environment=APP_LINE=#f0e6b8
+Environment=APP_BG=#fffbea
+Environment=APP_ACCENT=#F5C518
+Environment=APP_ON_ACCENT=#121212
+Environment=APP_DARK_FG=#f5f5f5
+Environment=APP_DARK_MUTED=#a3a3a3
+Environment=APP_DARK_LINE=#3d3a2a
+Environment=APP_DARK_BG=#121212
+Environment=APP_LOGO=/logo.png
+Environment=APP_LOGO_WIDTH=96px
+Environment=APP_WORDMARK=1
+ExecStart=/usr/bin/node /home/YOUR_USER/Projects/imdb-mcp/auth-server.js
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=/home/YOUR_USER/.config/imdb-mcp
+
+[Install]
+WantedBy=multi-user.target

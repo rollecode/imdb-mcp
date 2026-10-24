@@ -1,0 +1,20 @@
+[Unit]
+Description=IMDb MCP server (local machine only)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=YOUR_USER
+WorkingDirectory=/home/YOUR_USER/Projects/imdb-mcp
+EnvironmentFile=/home/YOUR_USER/.config/imdb-mcp/env
+ExecStart=/home/YOUR_USER/Projects/imdb-mcp/.venv/bin/imdb-mcp \
+  --transport http --host 127.0.0.1 --port 8620
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=read-only
+
+[Install]
+WantedBy=multi-user.target
